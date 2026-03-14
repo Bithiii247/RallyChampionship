@@ -10,7 +10,7 @@ public class ChampionshipStatistics {
 
         int total = 0;
 
-        for (Driver d : drivers) {
+        for(Driver d : drivers) {
             total += d.getTotalPoints();
         }
 
@@ -19,22 +19,22 @@ public class ChampionshipStatistics {
 
     public static String mostSuccessfulCountry(List<Driver> drivers) {
 
-        Map<String, Integer> countryPoints = new HashMap<>();
+        Map<String,Integer> countryPoints = new HashMap<>();
 
-        for (Driver d : drivers) {
+        for(Driver d : drivers) {
 
             countryPoints.put(
                 d.getCountry(),
-                countryPoints.getOrDefault(d.getCountry(), 0) + d.getTotalPoints()
+                countryPoints.getOrDefault(d.getCountry(),0) + d.getTotalPoints()
             );
         }
 
         String bestCountry = "";
         int max = 0;
 
-        for (String country : countryPoints.keySet()) {
+        for(String country : countryPoints.keySet()) {
 
-            if (countryPoints.get(country) > max) {
+            if(countryPoints.get(country) > max) {
                 max = countryPoints.get(country);
                 bestCountry = country;
             }
@@ -43,14 +43,7 @@ public class ChampionshipStatistics {
         return bestCountry;
     }
 
-    public static int totalPoints(List<Driver> drivers) {
-
-        int total = 0;
-
-        for (Driver d : drivers) {
-            total += d.getTotalPoints();
-        }
-
-        return total;
+    public static int totalRaces(ChampionshipManager manager) {
+        return manager.getRaces().size();
     }
 }

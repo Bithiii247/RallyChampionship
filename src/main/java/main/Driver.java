@@ -30,8 +30,8 @@ public class Driver {
         return car;
     }
 
-    public void switchCar(RallyCar newCar) {
-        this.car = newCar;
+    public void setCar(RallyCar car) {
+        this.car = car;
     }
 
     public void addPoints(int points) {

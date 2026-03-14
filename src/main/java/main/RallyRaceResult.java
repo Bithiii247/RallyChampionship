@@ -1,29 +1,17 @@
 package main;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class RallyRaceResult implements RaceResult {
 
     private String raceName;
     private String location;
-    private Map<Driver, Integer> results;
+    private Map<Integer, Driver> results = new LinkedHashMap<>();
 
     public RallyRaceResult(String raceName, String location) {
         this.raceName = raceName;
         this.location = location;
-        this.results = new HashMap<>();
-    }
-
-    @Override
-    public void recordResult(Driver driver, int position, int points) {
-        driver.addPoints(points);
-        results.put(driver, points);
-    }
-
-    @Override
-    public Map<Driver, Integer> getResults() {
-        return results;
     }
 
     public String getRaceName() {
@@ -32,5 +20,16 @@ public class RallyRaceResult implements RaceResult {
 
     public String getLocation() {
         return location;
+    }
+
+    @Override
+    public void recordResult(Driver driver, int position, int points) {
+        results.put(position, driver);
+        driver.addPoints(points);
+    }
+
+    @Override
+    public Map<Integer, Driver> getResults() {
+        return results;
     }
 }

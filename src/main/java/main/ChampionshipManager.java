@@ -7,16 +7,13 @@ public class ChampionshipManager {
 
     private static ChampionshipManager instance;
 
-    private List<Driver> drivers;
-    private List<RallyRaceResult> races;
+    private List<Driver> drivers = new ArrayList<>();
+    private List<RallyRaceResult> races = new ArrayList<>();
 
-    private ChampionshipManager() {
-        drivers = new ArrayList<>();
-        races = new ArrayList<>();
-    }
+    private ChampionshipManager() {}
 
     public static ChampionshipManager getInstance() {
-        if (instance == null) {
+        if(instance == null) {
             instance = new ChampionshipManager();
         }
         return instance;
@@ -26,7 +23,7 @@ public class ChampionshipManager {
         drivers.add(driver);
     }
 
-    public void addRaceResult(RallyRaceResult race) {
+    public void addRace(RallyRaceResult race) {
         races.add(race);
     }
 
@@ -41,15 +38,24 @@ public class ChampionshipManager {
     public Driver getLeader() {
 
         Driver leader = null;
-        int max = -1;
 
-        for (Driver d : drivers) {
-            if (d.getTotalPoints() > max) {
-                max = d.getTotalPoints();
+        for(Driver d : drivers) {
+            if(leader == null || d.getTotalPoints() > leader.getTotalPoints()) {
                 leader = d;
             }
         }
 
         return leader;
+    }
+
+    public int getTotalPoints() {
+
+        int total = 0;
+
+        for(Driver d : drivers) {
+            total += d.getTotalPoints();
+        }
+
+        return total;
     }
 }

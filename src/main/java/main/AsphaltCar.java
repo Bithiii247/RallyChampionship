@@ -8,6 +8,6 @@ public class AsphaltCar extends RallyCar {
 
     @Override
     public double calculatePerformance() {
-        return horsepower * 1.15;
+        return horsepower * 1.2;
     }
 }

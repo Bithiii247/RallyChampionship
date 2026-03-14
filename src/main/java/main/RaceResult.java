@@ -6,5 +6,5 @@ public interface RaceResult {
 
     void recordResult(Driver driver, int position, int points);
 
-    Map<Driver, Integer> getResults();
+    Map<Integer, Driver> getResults();
 }
